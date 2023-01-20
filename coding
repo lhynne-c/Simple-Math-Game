@@ -1,0 +1,249 @@
+from random import randint
+from random import choice
+import time
+
+
+def generator():
+    return randint(1, 10)
+
+def operation_generator():
+    c = ['+', '-', '*', '/']
+    return random.choice(c)
+
+def random_correct():
+    with open("Correct_Answer Expressions.txt") as f:
+        x = f.read()
+        x_list = x.split(',')
+        random_expression = randint(0, len(x_list))
+        print(x_list[random_expression])
+
+def random_wrong():
+    with open("Wrong_Answer Expressions.txt") as f:
+        x = f.read()
+        x_list = x.split(',')
+        random_expression = randint(0, len(x_list))
+        print(x_list[random_expression])
+
+
+def addition():
+    z=1
+    score = 0
+    while z < 11:
+        a = generator()
+        b = generator()
+        #print(a)
+        #print(b)
+        print("\n\nWhat is {} + {}?".format(a,b))
+        answer = int(input("Enter your answer here: "))
+        if answer == (a+b):
+            random_correct()
+            z+=1
+            score+=1
+            time.sleep(2)
+        else:
+            random_wrong()
+            z+=1
+            time.sleep(2)
+    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
+
+
+
+def subtraction():
+    z = 1
+    score = 0
+    while z < 11:
+        a = generator()
+        b = generator()
+        # print(a)
+        # print(b)
+        if a>=b :
+            print("\n\nWhat is {} - {}?".format(a, b))
+            answer = int(input("Enter your answer here: "))
+            if answer == (a - b):
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+        else:
+            print("\n\nWhat is {} - {}?".format(b, a))
+            answer = int(input("Enter your answer here: "))
+            if answer == (b - a):
+
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
+
+
+def multiplication():
+    z = 1
+    score = 0
+    while z < 11:
+        a = generator()
+        b = generator()
+        # print(a)
+        # print(b)
+        print("\n\nWhat is {} * {}?".format(a, b))
+        answer = int(input("Enter your answer here: "))
+        if answer == (a * b):
+
+            random_correct()
+            z += 1
+            score += 1
+            time.sleep(2)
+        else:
+            random_wrong()
+            z += 1
+            time.sleep(2)
+    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
+
+
+def division():
+    z = 1
+    score = 0
+    while z < 11:
+        a = generator()
+        b = generator()
+        # print(a)
+        # print(b)
+        if a>=b :
+            print("\n\nWhat is {} / {}?".format(a, b))
+            answer = int(input("Enter your answer here: "))
+            if answer == (a / b):
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+
+        else:
+            print("\n\nWhat is {} / {}?".format(b, a))
+            answer = int(input("Enter your answer here: "))
+            if answer == (b - a):
+
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
+
+def random():
+    z = 1
+    score = 0
+    #c = ['+','-','*','/']
+    while z < 11:
+        a = generator()
+        b = generator()
+        c = operation_generator()
+        # print(a)
+        # print(b)
+        print("\n\nWhat is {} {} {}?".format(a,c, b))
+        answer = int(input("Enter your answer here: "))
+        if c == '+':
+            if answer == (a + b):
+
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+        if c == '-':
+            if answer == (a - b):
+
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+        if c == '*':
+            if answer == (a * b):
+
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+        if c == '/':
+            if answer == (a / b):
+
+                random_correct()
+                z += 1
+                score += 1
+                time.sleep(2)
+            else:
+                random_wrong()
+                z += 1
+                time.sleep(2)
+    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
+
+
+
+
+name = input("Enter your name: ")
+age = input("Enter your age: ")
+print("Oh hi {}, welcome to Math Game!".format(name))
+time.sleep(2)
+
+
+print("""
+            M A T H   W I Z
+          ==================== 
+          Choose the operation you want to answer:
+          1. Addition
+          2. Subtraction
+          3. Multiplication
+          4. Division
+          5. Random
+          6. Exit                    
+            
+""")
+choice = int(input("Enter your answer here: "))
+
+
+#if choice == range(1,7):
+if choice == 1:
+    addition()
+if choice == 2:
+    subtraction()
+if choice == 3:
+    multiplication()
+if choice == 4:
+    division()
+if choice == 5:
+    random()
+if choice == 6:
+    quit()
+# else:
+#     print("Invalid choice! Enter a number from 1-6")
+#
+
+
+time.sleep(2)
+
+
+
