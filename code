@@ -1,0 +1,56 @@
+from random import randint
+import random
+import time
+
+
+def random_correct():
+    with open("Correct_Answer Expressions.txt") as f:
+        x = f.read()
+        x_list = x.split(',')
+        random_expression = randint(0, len(x_list))
+        print(x_list[random_expression])
+
+def random_wrong():
+    with open("Wrong_Answer Expressions.txt") as f:
+        x = f.read()
+        x_list = x.split(',')
+        random_expression = randint(0, len(x_list))
+        print(x_list[random_expression])
+
+
+
+
+
+
+
+
+
+
+name = input("Enter your name: ")
+age = input("Enter your age: ")
+print("Oh hi {}, welcome to Math Game!".format(name))
+time.sleep(2)
+
+z=1
+score = 0
+while z < 11:
+    a = random.randint(1,10)
+    b = random.randint(1,10)
+    #print(a)
+    #print(b)
+    print("\n\nWhat is {} + {}?".format(a,b))
+    answer = int(input("Enter your answer here: "))
+    if answer == (a+b):
+
+        random_correct()
+        z+=1
+        score+=1
+        time.sleep(2)
+    else:
+        random_wrong()
+        z+=1
+        time.sleep(2)
+
+time.sleep(2)
+print("\n\nYou got {} correct answers out of 10".format(score))
+
