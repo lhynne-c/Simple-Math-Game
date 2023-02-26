@@ -1,6 +1,15 @@
 from random import randint
-from random import choice
 import time
+from tkinter import *
+
+
+root = Tk()
+root.title("MATH QWIZ!")
+root.geometry('900x400')
+
+score = 0
+
+
 
 
 def generator():
@@ -30,122 +39,51 @@ def random_wrong():
 
 
 def addition():
-    z=1
-    score = 0
-    while z < 11:
-        a = generator()
-        b = generator()
-        #print(a)
-        #print(b)
-        print("\n\nWhat is {} + {}?".format(a,b))
-        answer = int(input("Enter your answer here: "))
-        if answer == (a+b):
-            random_correct()
-            z+=1
-            score+=1
-            time.sleep(2)
-        else:
-            random_wrong()
-            z+=1
-            time.sleep(2)
-    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
-
+    #hide_frames()
+    #math_qwiz_frame.grid()
+    global x_add, y_add
+    x_add = randint(1, 10)
+    y_add = randint(1, 10)
+    #print(a)
+    #print(b)
+    #global add
+    add = (f"{x_add} + {y_add}")
+    #answer = int(input("Enter your answer here: "))
+    return add
 
 
 def subtraction():
-    z = 1
-    score = 0
-    while z < 11:
-        a = generator()
-        b = generator()
-        # print(a)
-        # print(b)
-        if a>=b :
-            print("\n\nWhat is {} - {}?".format(a, b))
-            answer = int(input("Enter your answer here: "))
-            if answer == (a - b):
-                random_correct()
-                z += 1
-                score += 1
-                time.sleep(2)
-            else:
-                random_wrong()
-                z += 1
-                time.sleep(2)
-        else:
-            print("\n\nWhat is {} - {}?".format(b, a))
-            answer = int(input("Enter your answer here: "))
-            if answer == (b - a):
-
-                random_correct()
-                z += 1
-                score += 1
-                time.sleep(2)
-            else:
-                random_wrong()
-                z += 1
-                time.sleep(2)
-    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
+    x_sub = randint(1, 10)
+    y_sub = randint(1, 10)
+    if x_sub> y_sub:
+        subt = (f"{x_sub} - {y_sub}")
+    else:
+        subt = (f"{y_sub} - {x_sub}")
+    return subt
 
 
 def multiplication():
-    z = 1
-    score = 0
-    while z < 11:
-        a = generator()
-        b = generator()
-        # print(a)
-        # print(b)
-        print("\n\nWhat is {} * {}?".format(a, b))
-        answer = int(input("Enter your answer here: "))
-        if answer == (a * b):
-
-            random_correct()
-            z += 1
-            score += 1
-            time.sleep(2)
-        else:
-            random_wrong()
-            z += 1
-            time.sleep(2)
-    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
-
+    x = randint(1, 20)
+    y = randint(1, 20)
+    # print(a)
+    # print(b)
+    # global add
+    mult = (f"{x} x {y}")
+    # answer = int(input("Enter your answer here: "))
+    return mult
 
 def division():
-    z = 1
-    score = 0
-    while z < 11:
-        a = generator()
-        b = generator()
-        # print(a)
-        # print(b)
-        if a>=b :
-            print("\n\nWhat is {} / {}?".format(a, b))
-            answer = int(input("Enter your answer here: "))
-            if answer == (a / b):
-                random_correct()
-                z += 1
-                score += 1
-                time.sleep(2)
-            else:
-                random_wrong()
-                z += 1
-                time.sleep(2)
+    a = randint(1, 100)
+    b = randint(1, 50)
+    if a % 2 == 0 or a % 3 == 0 or a % 5 == 0:
+
+    # print(a)
+    # print(b)
+        if a>=b and b != 0:
+            return (f"{a} / {b}")
 
         else:
-            print("\n\nWhat is {} / {}?".format(b, a))
-            answer = int(input("Enter your answer here: "))
-            if answer == (b - a):
-
-                random_correct()
-                z += 1
-                score += 1
-                time.sleep(2)
-            else:
-                random_wrong()
-                z += 1
-                time.sleep(2)
-    print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
+            return (f"{b} / {a}")
 
 def random():
     #c = [1,2,3,4] # 1 = addition, 2= sub, 3=multiplication, 4=division
@@ -250,50 +188,265 @@ def random():
         print("\n\n\033[1mHey {}! You got {} correct answers out of 10 questions!\033[1m".format(name, score))
 
 
+def word_problem():
+    pass
+
+l = Label(root, text="WELCOME! \n Choose the operation you want to answer: ", font=('Times New Roman',12,'bold')).grid(row=0, column=0, columnspan=3, padx=10, pady=10)
+score_label = Label(root, text="Score: ", font=('Times New Roman',12,'bold')).grid(row=0, column=4, columnspan=3, padx=10, pady=10)
+
+# question = Label(root, text=add.get(), font=('Times New Roman',17,'bold')).grid(row=0, column=0, columnspan=3, padx=10, pady=10)
+# e = Entry(root, font=('Times New Roman',17,'bold'), width=20)
+# e.grid(row=1, column=0, columnspan=3, padx=10, pady=10)
+
+# to show the questions
+def add_():
+    # global addition_label
+
+    addition_label.config(text=addition())
+    add_enter_ans()
+
+def sub_():
+    subtraction_label.config(text=subtraction())
+    sub_enter_ans()
+def mul():
+    multiplication_label.config(text=multiplication())
+    mul_enter_ans()
+def div():
+    division_label.config(text=division())
+    div_enter_ans()
+def ran():
+    random_label.config(text=random())
+    ran_enter_ans()
+def word():
+    wordproblems_label.config(text=word_problem())
+    word_enter_ans()
+
+
+def add_enter_ans():
+    global addition_answer
+    addition_answer = Entry(root, font=('Times New Roman', 12, 'bold'))
+    addition_answer.grid(row=2, column=3, padx=10, pady=10)
+    addition_submit = Button(root, text="Check Answer", font=('Times New Roman', 12, 'bold'), command=check_answer_add).grid(row=2, column=4, padx=10, pady=10, sticky="w")
+def check_answer_add():
+    global score
+
+    add_text = addition_answer.get()
+    x_add = addition_label.cget("text")
+
+    xx = x_add.split()
+    num1 = int(xx[0])
+
+    num2 = int(xx[2])
+    x_add_ = num1 + num2
+
+    if int(add_text) == x_add_:
+        a = Label(root, text="Correct!", font=('Times New Roman', 12, 'bold'))
+        a.grid(row=2, column=5)
+        score+=1
+        b = Label(root, text=score, font=('Times New Roman', 12, 'bold'))
+        b.grid(row=0, column=5)
+        if score > 10:
+            time.sleep(5)
+            quit()
+        else:
+            add_()
+    else:
+        a = Label(root, text="Wrong!", font=('Times New Roman', 12, 'bold'))
+        a.grid(row=2, column=5)
+
+
+def sub_enter_ans():
+    global subtraction_answer
+    subtraction_answer = Entry(root, font=('Times New Roman', 12, 'bold'))
+    subtraction_answer.grid(row=3, column=3, padx=10, pady=10)
+    subtraction_submit = Button(root, text="Check Answer", font=('Times New Roman', 12, 'bold'), command=check_answer_sub).grid(row=3, column=4,padx=10, pady=10,sticky="w")
+
+def check_answer_sub():
+    global score
+
+    sub_text = subtraction_answer.get()
+    x_sub = subtraction_label.cget("text")
+
+    xx = x_sub.split()
+    num1 = int(xx[0])
+
+    num2 = int(xx[2])
+
+    x_sub_ = num1 - num2
+
+    if int(sub_text) == x_sub_:
+        s = Label(root, text="Correct!", font=('Times New Roman', 12, 'bold'))
+        s.grid(row=3, column=5)
+        score+=1
+        b = Label(root, text=score, font=('Times New Roman', 12, 'bold'))
+        b.grid(row=0, column=5)
+        sub_()
+    else:
+        s = Label(root, text="Wrong!", font=('Times New Roman', 12, 'bold'))
+        s.grid(row=3, column=5)
+
+
+def mul_enter_ans():
+    global multiplication_answer
+    multiplication_answer = Entry(root, font=('Times New Roman', 12, 'bold'))
+    multiplication_answer.grid(row=4, column=3, padx=10, pady=10)
+    multiplication_submit = Button(root, text="Check Answer", font=('Times New Roman', 12, 'bold'),command=check_answer_mul).grid(row=4,column=4, padx=10, pady=10,sticky="w")
+
+
+def check_answer_mul():
+    global score
+
+    mul_text = multiplication_answer.get()
+    x_mul = multiplication_label.cget("text")
+
+    xx = x_mul.split()
+    num1 = int(xx[0])
+
+    num2 = int(xx[2])
+    print(num1, num2)
+    x_mul_ = num1 * num2
+
+    if int(mul_text) == x_mul_:
+        s = Label(root, text="Correct!", font=('Times New Roman', 12, 'bold'))
+        s.grid(row=4, column=5)
+        score+=1
+        b = Label(root, text=score, font=('Times New Roman', 12, 'bold'))
+        b.grid(row=0, column=5)
+        mul()
+    else:
+        s = Label(root, text="Wrong!", font=('Times New Roman', 12, 'bold'))
+        s.grid(row=4, column=5)
+
+
+def div_enter_ans():
+    global division_answer
+    division_answer = Entry(root, font=('Times New Roman', 12, 'bold'))
+    division_answer.grid(row=5, column=3, padx=10, pady=10)
+    division_submit = Button(root, text="Check Answer", font=('Times New Roman', 12, 'bold'),command=check_answer_div).grid(row=5, column=4, padx=10, pady=10,sticky="w")
+
+
+def check_answer_div():
+    global score
+
+    div_text = division_answer.get()
+    x_div = division_label.cget("text")
+
+    xx = x_div.split()
+    num1 = int(xx[0])
+
+    num2 = int(xx[2])
+    print(num1, num2)
+    x_div_ = num1 / num2
+
+    if int(div_text) == x_div_:
+        s = Label(root, text="Correct!", font=('Times New Roman', 12, 'bold'))
+        s.grid(row=5, column=5)
+        score+=1
+        b = Label(root, text=score, font=('Times New Roman', 12, 'bold'))
+        b.grid(row=0, column=5)
+        div()
+    else:
+        s = Label(root, text="Wrong!", font=('Times New Roman', 12, 'bold'))
+        s.grid(row=5, column=5)
+
+def ran_enter_ans():
+    random_answer = Entry(root, font=('Times New Roman', 12, 'bold'))
+    random_answer.grid(row=5, column=3, padx=10, pady=10)
+    random_submit = Button(root, text="Check Answer", font=('Times New Roman', 12, 'bold')).grid(row=6, column=4,padx=10, pady=10,sticky="w")
+
+def word_enter_ans():
+    wordproblems_answer = Entry(root, font=('Times New Roman', 12, 'bold'))
+    wordproblems_answer.grid(row=6, column=3, padx=10, pady=10)
+    wordproblems_submit = Button(root, text="Check Answer", font=('Times New Roman', 12, 'bold')).grid(row=7, column=4,padx=10, pady=10,sticky="w")
 
 
 
 
-name = input("Enter your name: ")
-age = input("Enter your age: ")
-print("Oh hi {}, welcome to Math Game!".format(name))
-time.sleep(2)
 
 
-print("""
-            M A T H   W I Z
-          ==================== 
-          Choose the operation you want to answer:
-          1. Addition
-          2. Subtraction
-          3. Multiplication
-          4. Division
-          5. Random
-          6. Exit                    
-            
-""")
-choice = int(input("Enter your answer here: "))
+
+addition_button = Button(root, text="ADDITION", font=('Times New Roman',12,'bold'), command=add_)
+addition_button.grid(row=2, column=0,  padx=10, pady=10, sticky="w")
+subtraction_button = Button(root, text="SUBTRACTION", font=('Times New Roman',12,'bold'),command=sub_)
+subtraction_button.grid(row=3, column=0,  padx=10, pady=10, sticky="w")
+multiplication_button = Button(root, text="MULTIPLICATION", font=('Times New Roman',12,'bold'),command=mul)
+multiplication_button.grid(row=4, column=0, padx=10, pady=10, sticky="w")
+division_button = Button(root, text="DIVISION", font=('Times New Roman',12,'bold'),command=div)
+division_button.grid(row=5, column=0,  padx=10, pady=10, sticky="w")
+random_button = Button(root, text="RANDOM", font=('Times New Roman',12,'bold'),command=ran)
+random_button.grid(row=6, column=0,  padx=10, pady=10, sticky="w")
+wordproblems_button = Button(root, text="WORD PROBLEMS", font=('Times New Roman',12,'bold'),command=word)
+wordproblems_button.grid(row=7, column=0,  padx=10, pady=10, sticky="w")
 
 
-#if choice == range(1,7):
-if choice == 1:
-    addition()
-if choice == 2:
-    subtraction()
-if choice == 3:
-    multiplication()
-if choice == 4:
-    division()
-if choice == 5:
-    random()
-if choice == 6:
-    quit()
-# else:
-#     print("Invalid choice! Enter a number from 1-6")
+addition_label = Label(root, text="", font=('Times New Roman', 12, 'bold'))
+addition_label.grid(row=2, column=2, padx=10, sticky="w")
+subtraction_label= Label(root, text="", font=('Times New Roman',12,'bold'))
+subtraction_label.grid(row=3, column=2,  padx=10, pady=10, sticky="w")
+multiplication_label= Label(root, text="", font=('Times New Roman',12,'bold'))
+multiplication_label.grid(row=4, column=2,  padx=10, pady=10, sticky="w")
+division_label = Label(root, text="", font=('Times New Roman',12,'bold'))
+division_label.grid(row=5, column=2,  padx=10, pady=10, sticky="w")
+random_label = Label(root, text="", font=('Times New Roman',12,'bold'))
+random_label.grid(row=6, column=2,  padx=10, pady=10, sticky="w")
+wordproblems_label= Label(root, text="", font=('Times New Roman',12,'bold'))
+wordproblems_label.grid(row=7, column=2,  padx=10, pady=10, sticky="w")
+
+
+
+
+
 #
+# name = input("Enter your name: ")
+# age = input("Enter your age: ")
+# print("Oh hi {}, welcome to Math Game!".format(name))
+# time.sleep(2)
+#
+#
+# print("""
+#             M A T H   W I Z
+#           ====================
+#           Choose the operation you want to answer:
+#           1. Addition
+#           2. Subtraction
+#           3. Multiplication
+#           4. Division
+#           5. Random
+#           6. Exit
+#
+# """)
+# choice = int(input("Enter your answer here: "))
+#
+#
+#
+# if choice == 1:
+#     addition()
+# if choice == 2:
+#     subtraction()
+# if choice == 3:
+#     multiplication()
+# if choice == 4:
+#     division()
+# if choice == 5:
+#     random()
+# if choice == 6:
+#     quit()
+# # else:
+# #     print("Invalid choice! Enter a number from 1-6")
+#
+# time.sleep(2)
 
 
-time.sleep(2)
+def hide_frames():
+    for widget in math_qwiz_frame.winfo_children():  # to loop in and destroy previous children
+        widget.destroy()
+        math_qwiz_frame.forget()
 
 
+main = Menu(root)
+root.config(menu=main)
 
+# Create frames
+math_qwiz_frame = Frame(root, width=500, height=500)
+
+root.mainloop()
